@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration - GradeAI</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 0;
+        }
+
+        .card {
+            position: relative;
+            z-index: 2;
+            width: 360px;
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 0 30px rgba(0,0,0,0.6);
+            text-align: center;
+            color: white;
+            animation: fadeIn 1s ease;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 14px;
+        }
+
+        input::placeholder {
+            color: #eee;
+        }
+
+        button {
+            width: 40%;
+            padding: 12px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .register-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff9a9e);
+        }
+
+        .next-btn {
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        .image {
+            width: 120px;
+            margin: 15px auto;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        @keyframes float {
+            0% {transform: translateY(0);}
+            50% {transform: translateY(-10px);}
+            100% {transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>✨ Register Student</h1>
+    <img class="image" src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" alt="Student Icon">
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+
+    <div>
+        <button class="register-btn" onclick="registerUser()">Register 🚀</button>
+        <button class="next-btn" onclick="goNext()">Next ➡️</button>
+    </div>
+</div>
+
+<script>
+function registerUser() {
+    let username = document.getElementById("username").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    if (!username || !email || !password) {
+        alert("Please fill all fields!");
+        return;
+    }
+
+    // For now, store in localStorage (no backend)
+    localStorage.setItem("username", username);
+    localStorage.setItem("email", email);
+    localStorage.setItem("password", password);
+
+    alert("Registered successfully ✅");
+}
+
+function goNext() {
+    // Go to predict page
+    window.location.href = "predict.html";
+}
+</script>
+
+</body>
+</html>
